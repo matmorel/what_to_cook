@@ -47,6 +47,11 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # Add rubocop with ruby 3.2 guidelines
+  gem "rubocop", "~> 1.51", require: false
+  gem "rubocop-rails", "~> 2.20"
+  gem "rubocop-rspec", "~> 2.22"
 end
 
 group :test do
