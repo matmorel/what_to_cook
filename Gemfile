@@ -54,6 +54,9 @@ group :development do
   gem "rubocop", "~> 1.51", require: false
   gem "rubocop-rails", "~> 2.20"
   gem "rubocop-rspec", "~> 2.22"
+
+  # Add RSpec and configure it for Rails
+  gem "rspec-rails", "~> 6.0"
 end
 
 group :test do
