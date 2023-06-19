@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres # https://hub.docker.com/_/postgres
+    ports:
+      - $POSTGRES_PORT:5432
+    env_file: .env
+
+  rails:
+    build:
+      context: .
+      dockerfile: rails.dockerfile
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - $WEB_PORT:3000
+    depends_on:
+      - postgres
+    env_file: .env
+    tty: true
+    stdin_open: true
