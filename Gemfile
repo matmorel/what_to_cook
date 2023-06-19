@@ -42,6 +42,9 @@ group :development, :test do
   gem "rspec-rails", "~> 6.0"
   # Use simplecov to monitor test coverage
   gem "simplecov", "~> 0.22.0"
+  # Use factory bot and faker instead of fixtures
+  gem "factory_bot_rails", "~> 6.2"
+  gem "faker", "~> 3.2"
 end
 
 group :development do
