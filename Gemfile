@@ -35,21 +35,27 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 # gem "sassc-rails"
 
+# Use jsonpai.rb [https://github.com/stas/jsonapi.rb]
+gem "jsonapi.rb", "~> 2.0"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
-  # Add RSpec and configure it for Rails
-  gem "rspec-rails", "~> 6.0"
   # Use factory bot and faker instead of fixtures
   gem "factory_bot_rails", "~> 6.2"
   gem "faker", "~> 3.2"
+    # Add RSpec and configure it for Rails
+  gem "rspec-rails", "~> 6.0"
 end
 
 group :test do
-  # Use simplecov to monitor test coverage
-  gem "simplecov", "~> 0.22.0"
   # Use database cleaner to manage db state during tests
   gem "database_cleaner", "~> 2.0"
+  # RSpec matchers for JSON:API
+  gem "jsonapi-rspec", "~> 0.0.11"
+
+  # Use simplecov to monitor test coverage
+  gem "simplecov", "~> 0.22.0"
 end
 
 group :development do
