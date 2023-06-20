@@ -44,7 +44,7 @@ group :development, :test do
   # Use factory bot and faker instead of fixtures
   gem "factory_bot_rails", "~> 6.2"
   gem "faker", "~> 3.2"
-    # Add RSpec and configure it for Rails
+  # Add RSpec and configure it for Rails
   gem "rspec-rails", "~> 6.0"
 end
 
