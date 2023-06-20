@@ -33,5 +33,14 @@ module WhatToCook
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.generators do |g|
+      # Don't generate system test files.
+      g.system_tests = nil
+      # Use rspec as test framework
+      g.test_framework :rspec, fixture: true
+      # Generate factories instead of fixtures
+      g.fixture_replacement :factory_bot
+    end
   end
 end
