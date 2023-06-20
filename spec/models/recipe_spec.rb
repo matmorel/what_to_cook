@@ -3,11 +3,25 @@
 require "rails_helper"
 
 RSpec.describe Recipe do
-  describe "the recipes factory" do
-    let(:recipe) { create(:recipe) }
+  let(:recipe) { create(:recipe) }
+  let(:attributes) { recipe.attribute_names.map(&:to_sym).sort.reject { |a| %i[created_at updated_at id].include? a } }
 
+  describe "the recipes factory" do
     it "creates a valid recipe" do
       expect(recipe).to be_valid
+    end
+  end
+
+  describe "the Recipe serializer" do
+    let(:serialized) { RecipeSerializer.new(recipe).serializable_hash.to_json }
+    let(:parsed) { JSON.parse(serialized, symbolize_names: true) }
+
+    it "serializes the recipe into JSON" do
+      expect(parsed[:data]).to have_type(:recipe)
+    end
+
+    it "serializes all attributes" do
+      expect(parsed[:data]).to have_jsonapi_attributes(*attributes)
     end
   end
 end
