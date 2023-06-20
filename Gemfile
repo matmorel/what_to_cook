@@ -40,11 +40,16 @@ group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
   # Add RSpec and configure it for Rails
   gem "rspec-rails", "~> 6.0"
-  # Use simplecov to monitor test coverage
-  gem "simplecov", "~> 0.22.0"
   # Use factory bot and faker instead of fixtures
   gem "factory_bot_rails", "~> 6.2"
   gem "faker", "~> 3.2"
+end
+
+group :test do
+  # Use simplecov to monitor test coverage
+  gem "simplecov", "~> 0.22.0"
+  # Use database cleaner to manage db state during tests
+  gem "database_cleaner", "~> 2.0"
 end
 
 group :development do
