@@ -20,3 +20,4 @@ services:
     env_file: .env
     tty: true
     stdin_open: true
+    command: bin/dev

@@ -73,6 +73,8 @@ GEM
     builder (3.2.4)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
+    cssbundling-rails (1.2.0)
+      railties (>= 6.0.0)
     database_cleaner (2.0.2)
       database_cleaner-active_record (>= 2, < 3)
     database_cleaner-active_record (2.1.0)
@@ -97,12 +99,11 @@ GEM
       activesupport (>= 5.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
-    importmap-rails (1.2.1)
-      actionpack (>= 6.0.0)
-      railties (>= 6.0.0)
     io-console (0.6.0)
     irb (1.7.0)
       reline (>= 0.3.0)
+    jsbundling-rails (1.1.2)
+      railties (>= 6.0.0)
     json (2.6.3)
     jsonapi-rspec (0.0.11)
       rspec-core
@@ -142,7 +143,7 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.3)
-    puma (5.6.5)
+    puma (5.6.6)
       nio4r (~> 2.0)
     racc (1.7.1)
     rack (2.2.7)
@@ -256,11 +257,12 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  cssbundling-rails
   database_cleaner (~> 2.0)
   debug
   factory_bot_rails (~> 6.2)
   faker (~> 3.2)
-  importmap-rails
+  jsbundling-rails
   jsonapi-rspec (~> 0.0.11)
   jsonapi.rb (~> 2.0)
   pg (~> 1.1)
