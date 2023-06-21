@@ -10,6 +10,8 @@
 
 return if Recipe.exists?
 
+puts "Seeding database '#{ActiveRecord::Base.connection.current_database}'" # rubocop:disable Rails/Output
+
 json = File.read File.join(__dir__, "seeds.json")
 parsed = JSON.parse(json, symbolize_names: true)
 
