@@ -11,4 +11,7 @@ Rails.application.routes.draw do
       resources :recipes, only: %i[index show]
     end
   end
+
+  # Allows react to handle routing
+  get "*path" => "home#index"
 end
