@@ -1,10 +1,10 @@
 import React from 'react'
 import { render, screen, within } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { Recipe } from '../entities/Recipe'
-
-import RecipeCardList from './RecipeCardList'
 import { MemoryRouter } from 'react-router-dom'
+
+import { Recipe } from '../entities/Recipe'
+import RecipeCardList from './RecipeCardList'
 
 const recipeOne = {
   id: 42,

@@ -1,8 +1,8 @@
 import React from 'react'
 import { render, screen, within } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { Recipe } from '../entities/Recipe'
 
+import { Recipe } from '../entities/Recipe'
 import RecipeDetails from './RecipeDetails'
 
 const recipe = {
