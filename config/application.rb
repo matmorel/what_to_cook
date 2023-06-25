@@ -34,6 +34,10 @@ module WhatToCook
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
+    # We are using advanced PostgreSQL features such as triggers and procedure,
+    # so we need to move the schema to sql format.
+    config.active_record.schema_format = :sql
+
     config.generators do |g|
       # Don't generate system test files.
       g.system_tests = nil

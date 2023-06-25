@@ -7,7 +7,10 @@ module Api
       include JSONAPI::Fetching
 
       def index
-        jsonapi_paginate(Recipe.all) do |paginated|
+        filter = (params.dig(:filter, :ingredients) || []).join(" ")
+
+        recipes = filter.empty? ? Recipe.all : Recipe.by_ingredients(filter)
+        jsonapi_paginate(recipes) do |paginated|
           render jsonapi: paginated
         end
       end

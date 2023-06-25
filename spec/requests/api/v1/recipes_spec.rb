@@ -25,5 +25,25 @@ RSpec.describe "Api::V1::Recipes" do
 
       expect(response_body[:meta][:pagination][:current]).to eq 2
     end
+
+    context "when using the ingredients filter" do
+      before { create(:recipe, ingredients: ["test"]) }
+
+      it "returns the recipe corresponding to the requested ingredient" do
+        get "/api/v1/recipes?filter[ingredients][]=test"
+
+        expect(response_body[:meta][:pagination][:records]).to eq 1
+      end
+    end
+  end
+
+  describe "GET /api/v1/recipes/:id" do
+    before { create(:recipe, id: 1) }
+
+    it "returns the requested recipe" do
+      get "/api/v1/recipes/1"
+
+      expect(response_body[:data][:id]).to eq "1"
+    end
   end
 end

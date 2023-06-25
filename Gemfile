@@ -41,6 +41,9 @@ gem "bootsnap", require: false
 # Use jsonpai.rb [https://github.com/stas/jsonapi.rb]
 gem "jsonapi.rb", "~> 2.0"
 
+# Use pg_search to perform full text searches [https://github.com/Casecommons/pg_search]
+gem "pg_search", "~> 2.3"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]

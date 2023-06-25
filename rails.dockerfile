@@ -2,6 +2,7 @@ FROM ruby:3.2.2-alpine
 
 RUN apk add --no-cache --update \
     build-base \
+    postgresql-client \
     postgresql-dev \
     tzdata \
     yarn
