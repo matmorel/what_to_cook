@@ -26,7 +26,7 @@ docker compose exec web rails spec
 
 1. As a user, I want a list all recipes, so I can find something I like.
 
-    **Scenario** Get all recipes in a paginated list :
+    **Scenario** Get all recipes in a paginated list:
 
         Given the user arrives on the home page
         When the page is loaded
@@ -35,7 +35,7 @@ docker compose exec web rails spec
 
 1. As a user, I want to see a recipe with all its information.
 
-    **Scenario** Displaying recipe details :
+    **Scenario** Displaying recipe details:
 
         Given the user is on the home page
         When the user clicks on a recipe from the list
@@ -55,6 +55,7 @@ docker compose exec web rails spec
 
 The ingredients are stored in a PostgreSQL array.
 A trigger runs a function that is transparently updating the `ingredients_search` tsvector when the `ingredients` array is created or updated.
+
 By taking advantage of the PostgreSQL search features, we can achieve good performance when searching for a recipe by ingredient name.
 
 ```mermaid
