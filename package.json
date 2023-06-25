@@ -43,5 +43,6 @@
     "transform": {
       "^.+\\.tsx?$": "babel-jest"
     }
-  }
+  },
+  "packageManager": "yarn@1.22.19"
 }

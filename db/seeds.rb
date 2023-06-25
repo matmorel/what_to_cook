@@ -15,18 +15,18 @@ puts "Seeding database '#{ActiveRecord::Base.connection.current_database}'" # ru
 json = File.read File.join(__dir__, "seeds.json")
 parsed = JSON.parse(json, symbolize_names: true)
 
-parsed.map! do |recipe|
-  {
-    name: recipe[:title],
-    cooking_time: recipe[:cook_time],
-    preparation_time: recipe[:prep_time],
-    ingredients: recipe[:ingredients],
-    rating: recipe[:ratings],
-    cuisine: recipe[:cuisine],
-    category: recipe[:category],
-    author: recipe[:author],
-    image_url: recipe[:image]
-  }
+parsed.each do |recipe|
+  Recipe.create(
+    {
+      name: recipe[:title],
+      cooking_time: recipe[:cook_time],
+      preparation_time: recipe[:prep_time],
+      ingredients: recipe[:ingredients],
+      rating: recipe[:ratings],
+      cuisine: recipe[:cuisine],
+      category: recipe[:category],
+      author: recipe[:author],
+      image_url: recipe[:image]
+    }
+  )
 end
-
-Recipe.create(parsed)
