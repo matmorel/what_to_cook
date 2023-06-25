@@ -18,12 +18,21 @@ jest.mock('jsonapi-react', () => ({
 const mockSetSearchParams = jest.fn()
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useSearchParams: () => [{ get: () => 42 }, mockSetSearchParams]
+  useSearchParams: () => [{ get: (paramName) => {
+    if (paramName === 'ingredients') { return 'water' }
+    if (paramName === 'page') { return '12' }
+  }}, mockSetSearchParams]
 }))
 
 const mockRecipeCardList = jest.fn()
 jest.mock('../components/RecipeCardList', () => (props) => {
   mockRecipeCardList(props);
+  return <div></div>
+});
+
+const mockIngredientsPicker = jest.fn()
+jest.mock('../components/IngredientsPicker', () => (props) => {
+  mockIngredientsPicker(props);
   return <div></div>
 });
 
@@ -54,5 +63,10 @@ test('displays the Pagination component with its props', async () => {
 
 test('updates search params on page change', async () => {
   mockPagination.mock.calls[0][0].onChange(42)
-  expect(mockSetSearchParams).toHaveBeenCalledWith("page=42")
+  expect(mockSetSearchParams).toHaveBeenCalledWith('page=42&ingredients=water')
+})
+
+test('updates search params on ingredient search', async () => {
+  mockIngredientsPicker.mock.calls[0][0].onChange(['flour', 'water'])
+  expect(mockSetSearchParams).toHaveBeenCalledWith('ingredients=flour, water')
 })

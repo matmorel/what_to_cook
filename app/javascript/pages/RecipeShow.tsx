@@ -14,7 +14,7 @@ function RecipeShow() {
 
   return (
     <>
-      <Hero color="link" size="medium" gradient>
+      <Hero color="info" size="medium" gradient>
         <Hero.Body data-testid="hero-body">
           <Heading textAlign="center">
             {recipe?.name}
