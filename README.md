@@ -80,7 +80,7 @@ erDiagram
 ## Improvements
 
 - Depending of the application's future features, it may make sense to move the ingredients in a separate table.
-- As Rails assets pipeline still struggle with SPA javascript (e.g. no hot reloading), it seems to be a good idea move the javascript outside of Rails.
+- As Rails assets pipeline still struggle with SPA javascript (e.g. no hot reloading), it seems to be a good idea to move the javascript outside of Rails.
 - Using a prebuilt framework like Next would simplify the growth of the application code base.
 - URL search params should be used on application mount to allow users to share their search results.
 - The API should return JSON:API compliant errors and not html.
