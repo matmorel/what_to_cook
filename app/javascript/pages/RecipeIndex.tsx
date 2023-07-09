@@ -18,7 +18,7 @@ function RecipeIndex() {
     },
     filter: {
       ...(SearchParams.get('ingredients') && {
-        ingredients: {'': SearchParams.get('ingredients') }
+        ingredients: { '': SearchParams.get('ingredients') }
       })
     },
     fields: {
@@ -26,19 +26,46 @@ function RecipeIndex() {
     }
   }])
 
-  const search = (ingredients: string[]) => {
-    if (ingredients.length === 0) { return setSearchParams("") }
+  const updateSearchParams = (params) => {
+    const paramsNames = ['page', 'ingredients']
+    const searchParams = {}
 
-    setSearchParams(`ingredients=${ingredients.join(', ')}`)
+    paramsNames.forEach(key => {
+      const value = SearchParams.get(key)
+      if (value) { searchParams[key] = `${key}=${value}` }
+    })
+
+    for (const [key, value] of Object.entries(params)) {
+      if (value == null) {
+        delete searchParams[key]
+        continue
+      }
+
+      searchParams[key] = `${key}=${value}`
+    }
+
+    setSearchParams(Object.values(searchParams).sort().join('&'))
+  }
+
+  const search = (ingredients: string[]) => {
+    if (ingredients.length === 0) { return updateSearchParams({ ingredients: null, page: null }) }
+
+    updateSearchParams({ ingredients: ingredients.join(', '), page: null })
   }
 
   const changePage = (page: number) => {
-    const params: string[] = [`page=${page}`]
-    if (SearchParams.get('ingredients')) {
-      params.push(`ingredients=${SearchParams.get('ingredients')}`)
-    }
+    if (page === 1) { return updateSearchParams({ page: null }) }
 
-    setSearchParams(params.join('&'))
+    updateSearchParams({ page: page })
+  }
+
+  const currentIngredients = () => {
+    const ingredients = SearchParams.get('ingredients')?.split(', ')
+
+    if (ingredients == null) { return [] }
+    if (!Array.isArray(ingredients)) { return [ingredients] }
+
+    return ingredients
   }
 
   return (
@@ -48,7 +75,7 @@ function RecipeIndex() {
           <Heading textAlign="center">
             What to cook?!
           </Heading>
-          <IngredientsPicker onChange={search}/>
+          <IngredientsPicker ingredients={currentIngredients()} onChange={search} />
         </Hero.Body>
       </Hero>
       <RecipeCardList data={data} />

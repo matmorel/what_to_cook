@@ -63,7 +63,7 @@ test('displays the Pagination component with its props', async () => {
 
 test('updates search params on page change', async () => {
   mockPagination.mock.calls[0][0].onChange(42)
-  expect(mockSetSearchParams).toHaveBeenCalledWith('page=42&ingredients=water')
+  expect(mockSetSearchParams).toHaveBeenCalledWith('ingredients=water&page=42')
 })
 
 test('updates search params on ingredient search', async () => {
