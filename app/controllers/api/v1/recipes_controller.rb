@@ -8,8 +8,8 @@ module Api
 
       def index
         filter = (params.dig(:filter, :ingredients) || []).join(" ")
+        recipes = filter.empty? ? Recipe.all.order(:id) : Recipe.by_ingredients(filter)
 
-        recipes = filter.empty? ? Recipe.all : Recipe.by_ingredients(filter)
         jsonapi_paginate(recipes) do |paginated|
           render jsonapi: paginated
         end
