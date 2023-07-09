@@ -5,7 +5,7 @@ class Recipe < ApplicationRecord
 
   pg_search_scope :by_ingredients,
                   against: :ingredients,
-                  order_within_rank: "recipes.rating DESC",
+                  order_within_rank: "recipes.rating DESC, id ASC",
                   using: {
                     tsearch: {
                       dictionary: "english",
